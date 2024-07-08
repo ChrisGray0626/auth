@@ -1,11 +1,10 @@
 package pers.ruizhi.auth.util;
 
-import jakarta.annotation.Resource;
+import java.util.concurrent.TimeUnit;
+import javax.annotation.Resource;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * @Description

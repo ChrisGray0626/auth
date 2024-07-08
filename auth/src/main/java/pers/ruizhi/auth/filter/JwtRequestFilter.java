@@ -1,15 +1,16 @@
 package pers.ruizhi.auth.filter;
 
-import jakarta.annotation.Resource;
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
+import javax.annotation.Resource;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import pers.ruizhi.auth.Constant;
 import pers.ruizhi.auth.domain.UserDetail;
@@ -18,14 +19,12 @@ import pers.ruizhi.auth.service.UserDetailServiceImpl;
 import pers.ruizhi.auth.util.JwtUtil;
 import pers.ruizhi.auth.util.RedisCacheUtil;
 
-import java.io.IOException;
-
 /**
  * @Description
  * @Author RuiZhi Li
  * @Date 2024/7/3
  */
-@Component
+// @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 
     @Resource

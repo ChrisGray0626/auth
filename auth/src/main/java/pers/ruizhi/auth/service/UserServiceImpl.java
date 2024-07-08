@@ -1,12 +1,16 @@
 package pers.ruizhi.auth.service;
 
-import jakarta.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
+import javax.annotation.Resource;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import static pers.ruizhi.auth.Constant.DEFAULT_EXPIRE_TIME;
+import static pers.ruizhi.auth.Constant.LOGIN_KEY_PREFIX;
 import pers.ruizhi.auth.domain.Response;
 import pers.ruizhi.auth.domain.ResponseEnum;
 import pers.ruizhi.auth.domain.UserDetail;
@@ -14,12 +18,6 @@ import pers.ruizhi.auth.domain.UserLoginDto;
 import pers.ruizhi.auth.exception.AuthenticationFailException;
 import pers.ruizhi.auth.util.JwtUtil;
 import pers.ruizhi.auth.util.RedisCacheUtil;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import static pers.ruizhi.auth.Constant.DEFAULT_EXPIRE_TIME;
-import static pers.ruizhi.auth.Constant.LOGIN_KEY_PREFIX;
 
 /**
  * @Description

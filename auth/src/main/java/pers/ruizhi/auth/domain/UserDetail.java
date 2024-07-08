@@ -1,13 +1,15 @@
 package pers.ruizhi.auth.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.Collection;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.Collection;
 
 /**
  * @Description
@@ -22,10 +24,11 @@ import java.util.Collection;
 public class UserDetail implements UserDetails {
 
     private User user;
+    private String permits;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return Stream.of(permits.split(",")).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
     }
 
     @Override

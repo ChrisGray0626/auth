@@ -3,13 +3,12 @@ package pers.ruizhi.auth.util;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Service;
-import pers.ruizhi.auth.Constant;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Service;
+import pers.ruizhi.auth.Constant;
 
 @Service
 public class JwtUtil {

@@ -12,6 +12,8 @@ public class Constant {
     // JWT Secret Key
     public static final String SECRET_KEY = "secret";
     public static final Long DEFAULT_EXPIRE_TIME = (long) (1000 * 60 * 60);
+    public static final Integer ACCESS_TOKEN_VALIDITY_SECONDS = 300;
+    public static final Integer REFRESH_TOKEN_VALIDITY_SECONDS = 300;
     public static final String LOGIN_KEY_PREFIX = "login:";
 
     public static final String AUTHORIZATION_HEADER = "Authorization";
