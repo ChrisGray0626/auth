@@ -10,10 +10,8 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public enum ResponseEnum {
 
-    SUCCESS("20000", "success"),
-    LOGIN_SUCCESS("20001", "Login successfully."),
-    LOGOUT_SUCCESS("20002", "Logout successfully."),
-    ERROR("50000", "fail");
+    SUCCESS("20000", "success"), LOGIN_SUCCESS("20001", "Login successfully."),
+    LOGOUT_SUCCESS("20002", "Logout successfully."), ERROR("50000", "fail");
 
     public final String code;
     public final String msg;

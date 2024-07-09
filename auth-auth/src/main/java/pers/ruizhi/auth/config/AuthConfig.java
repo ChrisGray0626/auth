@@ -1,5 +1,6 @@
 package pers.ruizhi.auth.config;
 
+import java.util.Collections;
 import javax.annotation.Resource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,14 +16,15 @@ import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.code.InMemoryAuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
+import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import static pers.ruizhi.auth.Constant.ACCESS_TOKEN_VALIDITY_SECONDS;
 import static pers.ruizhi.auth.Constant.REFRESH_TOKEN_VALIDITY_SECONDS;
-import static pers.ruizhi.auth.Constant.SECRET_KEY;
 
 /**
  * @Description
- * @Author Chris
+ * @Author Ruizhi Li
  * @Date 2024/7/8
  */
 @Configuration
@@ -38,27 +40,39 @@ public class AuthConfig extends AuthorizationServerConfigurerAdapter {
     @Resource
     private AuthenticationManager authenticationManager;
 
+    @Resource
+    private JwtAccessTokenConverter tokenConverter;
+
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         security
                 // /oauth/token_key API
                 .tokenKeyAccess("permitAll()")
                 // /oauth/check_token API
-                .checkTokenAccess("permitAll()").allowFormAuthenticationForClients();
+                .checkTokenAccess("permitAll()")
+                .allowFormAuthenticationForClients();
     }
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory().withClient("client1").secret(passwordEncoder.encode(SECRET_KEY))
-                // .resourceIds("resource1")
+        clients
+                .inMemory()
+                .withClient("client1")
+                .secret(passwordEncoder.encode("secret"))
+                .resourceIds("resource1")
                 .authorizedGrantTypes("authorization_code", "password", "client_credentials", "implicit",
-                        "refresh_token").scopes("scope1").autoApprove(true).redirectUris("https://www.baidu.com/");
+                        "refresh_token")
+                .scopes("scope1")
+                .autoApprove(true)
+                .redirectUris("https://www.baidu.com/");
     }
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
-        endpoints.authenticationManager(authenticationManager)
-                .authorizationCodeServices(new InMemoryAuthorizationCodeServices()).tokenServices(tokenServices())
+        endpoints
+                .authenticationManager(authenticationManager)
+                .authorizationCodeServices(new InMemoryAuthorizationCodeServices())
+                .tokenServices(tokenServices())
                 .allowedTokenEndpointRequestMethods(HttpMethod.POST);
     }
 
@@ -70,6 +84,10 @@ public class AuthConfig extends AuthorizationServerConfigurerAdapter {
         tokenServices.setTokenStore(tokenStore);
         tokenServices.setAccessTokenValiditySeconds(ACCESS_TOKEN_VALIDITY_SECONDS);
         tokenServices.setRefreshTokenValiditySeconds(REFRESH_TOKEN_VALIDITY_SECONDS);
+
+        TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
+        tokenEnhancerChain.setTokenEnhancers(Collections.singletonList(tokenConverter));
+        tokenServices.setTokenEnhancer(tokenEnhancerChain);
 
         return tokenServices;
     }
