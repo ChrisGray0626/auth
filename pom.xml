@@ -9,12 +9,15 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>pers.ruizhi</groupId>
-    <artifactId>auth-parent</artifactId>
+    <artifactId>micro-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>auth-auth</module>
-        <module>auth-server</module>
+        <module>micro-auth</module>
+        <module>micro-server</module>
+        <module>micro-eureka</module>
+        <module>micro-eureka</module>
+        <module>micro-gateway</module>
     </modules>
     <properties>
         <java.version>11</java.version>

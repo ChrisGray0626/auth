@@ -1,0 +1,24 @@
+server:
+  port: 3001
+spring:
+  application:
+    name: micro-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: server
+          uri: lb://micro-server
+          predicates:
+            - Path=/user
+        - id: auth
+          uri: lb://micro-auth
+          predicates:
+            - Path=/oauth/**
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:2001/eureka/

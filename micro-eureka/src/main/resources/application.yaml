@@ -1,0 +1,17 @@
+server:
+  port: 2001
+spring:
+  application:
+    name: micro-eureka
+eureka:
+  instance:
+    prefer-ip-address: false
+    hostname: 127.0.0.1
+    instance-id: 127.0.0.1:${server.port}
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    enable-self-preservation: false
