@@ -4,9 +4,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import pers.ruizhi.auth.domain.Response;
 import pers.ruizhi.auth.domain.UserLoginDto;
 import pers.ruizhi.auth.service.UserService;
+import pers.ruizhi.common.domain.Response;
 
 import javax.annotation.Resource;
 

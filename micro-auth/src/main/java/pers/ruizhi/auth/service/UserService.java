@@ -1,7 +1,7 @@
 package pers.ruizhi.auth.service;
 
-import pers.ruizhi.auth.domain.Response;
 import pers.ruizhi.auth.domain.UserLoginDto;
+import pers.ruizhi.common.domain.Response;
 
 /**
  * @Description

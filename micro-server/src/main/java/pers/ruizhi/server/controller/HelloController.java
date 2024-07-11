@@ -3,7 +3,7 @@ package pers.ruizhi.server.controller;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pers.ruizhi.server.domain.Response;
+import pers.ruizhi.common.domain.Response;
 
 import java.security.Principal;
 

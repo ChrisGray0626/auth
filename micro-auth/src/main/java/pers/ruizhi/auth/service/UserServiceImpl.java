@@ -6,13 +6,13 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import pers.ruizhi.auth.domain.Response;
-import pers.ruizhi.auth.domain.ResponseEnum;
 import pers.ruizhi.auth.domain.UserDetail;
 import pers.ruizhi.auth.domain.UserLoginDto;
 import pers.ruizhi.auth.exception.AuthenticationFailException;
 import pers.ruizhi.auth.util.JwtUtil;
 import pers.ruizhi.auth.util.RedisCacheUtil;
+import pers.ruizhi.common.domain.Response;
+import pers.ruizhi.common.domain.ResponseEnum;
 
 import javax.annotation.Resource;
 import java.util.HashMap;

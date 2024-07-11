@@ -1,4 +1,4 @@
-package pers.ruizhi.server.domain;
+package pers.ruizhi.common.domain;
 
 import lombok.Data;
 
