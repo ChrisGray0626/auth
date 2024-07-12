@@ -16,6 +16,7 @@ public enum ResponseEnum {
     ERROR("50000", "fail"),
     INVALID_TOKEN_ERROR("50001", "Token is invalid."),
     EXPIRED_TOKEN_ERROR("50002", "Token is expired."),
+    ACCESS_DENIED_ERROR("50003", "Access is Denied.")
     ;
 
     public final String code;

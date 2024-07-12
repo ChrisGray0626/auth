@@ -21,9 +21,14 @@ public class WebfluxSecurityConfig {
     private AuthenticationManager authenticationManager;
     @Resource
     private AuthenticationEntryPoint authenticationEntryPoint;
+    @Resource
+    private AuthorizationManager authorizationManager;
+    @Resource
+    private AccessDeniedHandler accessDeniedHandler;
 
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
+        // Config authentication
         http
                 .oauth2ResourceServer()
                 .jwt()
@@ -31,17 +36,17 @@ public class WebfluxSecurityConfig {
                 .and()
                 .authenticationEntryPoint(authenticationEntryPoint);
         http
+                .csrf()
+                .disable()
                 .authorizeExchange()
                 .pathMatchers("/oauth/token")
                 .permitAll()
-//                .anyExchange()
-                // TODO Authorization
-//                .access(authorizationManager)
-//                .and()
-//                .exceptionHandling()
+                .anyExchange()
+                .access(authorizationManager)
                 .and()
-                .csrf()
-                .disable();
+                .exceptionHandling()
+                .accessDeniedHandler(accessDeniedHandler)
+        ;
 
         return http.build();
     }
