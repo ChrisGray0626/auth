@@ -28,6 +28,9 @@ public class WebfluxSecurityConfig {
 
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
+        http
+                .csrf()
+                .disable();
         // Config authentication
         http
                 .oauth2ResourceServer()
@@ -35,9 +38,8 @@ public class WebfluxSecurityConfig {
                 .authenticationManager(authenticationManager)
                 .and()
                 .authenticationEntryPoint(authenticationEntryPoint);
+        // Config authorization
         http
-                .csrf()
-                .disable()
                 .authorizeExchange()
                 .pathMatchers("/oauth/token")
                 .permitAll()
@@ -47,6 +49,7 @@ public class WebfluxSecurityConfig {
                 .exceptionHandling()
                 .accessDeniedHandler(accessDeniedHandler)
         ;
+        // TODO Filter to pass user detail
 
         return http.build();
     }

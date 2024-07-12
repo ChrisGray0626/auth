@@ -13,7 +13,7 @@ spring:
         - id: server
           uri: lb://micro-server
           predicates:
-            - Path=/user
+            - Path=/server/**
         - id: auth
           uri: lb://micro-auth
           predicates:
