@@ -18,7 +18,7 @@ import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 
-import static pers.ruizhi.auth.Constant.DEFAULT_EXPIRE_TIME;
+import static pers.ruizhi.auth.Constant.ACCESS_TOKEN_VALIDITY_SECONDS;
 import static pers.ruizhi.auth.Constant.LOGIN_KEY_PREFIX;
 
 /**
@@ -29,6 +29,7 @@ import static pers.ruizhi.auth.Constant.LOGIN_KEY_PREFIX;
 @Service
 public class UserServiceImpl implements UserService {
 
+    // TODO UserServiceImpl
     @Resource
     private AuthenticationManager authenticationManager;
     @Resource
@@ -44,7 +45,7 @@ public class UserServiceImpl implements UserService {
         }
         UserDetail userDetail = (UserDetail) authentication.getPrincipal();
         // Save the user detail to the cache
-        redisCacheUtil.set(LOGIN_KEY_PREFIX + userDetail.getUsername(), userDetail, DEFAULT_EXPIRE_TIME);
+        redisCacheUtil.set(LOGIN_KEY_PREFIX + userDetail.getUsername(), userDetail, ACCESS_TOKEN_VALIDITY_SECONDS);
         // Create the token
         String token = JwtUtil.createToken(userDetail.getUsername());
         // TODO Add token to Header
