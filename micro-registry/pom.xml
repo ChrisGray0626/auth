@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>pers.pers.ruizhi</groupId>
-    <artifactId>micro-eureka</artifactId>
+    <artifactId>micro-registry</artifactId>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>

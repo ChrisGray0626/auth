@@ -15,8 +15,7 @@
     <modules>
         <module>micro-auth</module>
         <module>micro-server</module>
-        <module>micro-eureka</module>
-        <module>micro-eureka</module>
+        <module>micro-registry</module>
         <module>micro-gateway</module>
         <module>micro-common</module>
     </modules>

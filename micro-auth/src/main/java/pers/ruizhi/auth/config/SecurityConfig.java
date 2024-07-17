@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -36,15 +37,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 // Close csrf
                 .csrf(AbstractHttpConfigurer::disable)
-                // .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                // .and()
-                .authorizeRequests().anyRequest().permitAll().and().formLogin().and().logout()
-        //                 TODO Session : SessionCreationPolicy.STATELESS
-        //                 .authorizeHttpRequests((auth) ->
-        //                         auth
-        //                                 .requestMatchers("/user/login").anonymous()
-        //                                 .anyRequest().authenticated()
-        //                 )
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .authorizeRequests()
+                .anyRequest()
+                .permitAll()
+                .and()
+                .formLogin()
+                .and()
+                .logout()
+                .and()
         // .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
         ;
     }
