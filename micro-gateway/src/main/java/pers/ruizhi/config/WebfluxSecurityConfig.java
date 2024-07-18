@@ -49,7 +49,6 @@ public class WebfluxSecurityConfig {
                 .exceptionHandling()
                 .accessDeniedHandler(accessDeniedHandler)
         ;
-        // TODO Filter to pass user detail
 
         return http.build();
     }

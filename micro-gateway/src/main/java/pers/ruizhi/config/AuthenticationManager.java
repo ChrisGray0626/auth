@@ -44,6 +44,9 @@ public class AuthenticationManager implements ReactiveAuthenticationManager {
                                 return Mono.error(new AccountExpiredException(token));
                             }
                             OAuth2Authentication oAuth2Authentication = tokenStore.readAuthentication(token);
+                            if (ObjectUtils.isEmpty(oAuth2Authentication)) {
+                                return Mono.error(new InvalidBearerTokenException(token));
+                            }
                             return Mono.just(oAuth2Authentication);
                         }
                 )
