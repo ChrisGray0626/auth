@@ -15,7 +15,7 @@ import static pers.ruizhi.auth.Constant.ADDITIONAL_INFO_KEY_USER;
 
 /**
  * @Description
- * @Author Chris
+ * @Author RuiZhi Li
  * @Date 2024/7/12
  */
 @Component
