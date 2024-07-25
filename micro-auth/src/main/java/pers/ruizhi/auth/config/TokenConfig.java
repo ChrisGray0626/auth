@@ -6,7 +6,7 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
-import static pers.ruizhi.auth.Constant.SECRET_KEY;
+import static pers.ruizhi.auth.Constant.TOKEN_SECRET_KEY;
 
 /**
  * @Description
@@ -25,7 +25,7 @@ public class TokenConfig {
     @Bean
     public JwtAccessTokenConverter tokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        converter.setSigningKey(SECRET_KEY);
+        converter.setSigningKey(TOKEN_SECRET_KEY);
 
         return converter;
     }

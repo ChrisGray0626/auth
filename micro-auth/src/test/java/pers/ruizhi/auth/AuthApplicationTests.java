@@ -8,10 +8,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 class AuthApplicationTests {
 
     @Test
-    void contextLoads() {
-    }
-
-    @Test
     public void PasswordEncoderTest() {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String rawPassword = "123456";

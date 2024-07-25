@@ -28,12 +28,13 @@ public class JwtUtil {
     }
 
     private static String createToken(Map<String, Object> claims, String subject) {
-        return Jwts.builder()
+        return Jwts
+                .builder()
                 .setClaims(claims)
                 .setSubject(subject)
 //                .setIssuedAt(new Date(System.currentTimeMillis()))
 //                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // 10小时有效期
-                .signWith(SignatureAlgorithm.HS256, Constant.SECRET_KEY)
+                .signWith(SignatureAlgorithm.HS256, Constant.TOKEN_SECRET_KEY)
                 .compact();
     }
 
@@ -53,6 +54,10 @@ public class JwtUtil {
     }
 
     private static Claims extractAllClaims(String token) {
-        return Jwts.parser().setSigningKey(Constant.SECRET_KEY).parseClaimsJws(token).getBody();
+        return Jwts
+                .parser()
+                .setSigningKey(Constant.TOKEN_SECRET_KEY)
+                .parseClaimsJws(token)
+                .getBody();
     }
 }

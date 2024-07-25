@@ -1,0 +1,23 @@
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    restart: always
+    command: [
+      '--default-authentication-plugin=mysql_native_password',
+      '--character-set-server=utf8mb4',
+      '--collation-server=utf8mb4_general_ci',
+      '--explicit_defaults_for_timestamp=true',
+      '--lower_case_table_names=1'
+    ]
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_INITDB_SKIP_TZINFO: "Asia/Shanghai"
+    volumes:
+      - ./data:/var/lib/mysql
+      - ./log:/var/log/mysql
+      - ./initdb:/docker-entrypoint-initdb.d/
+      - ./conf:/etc/mysql/conf.d
+    ports:
+      - "3306:3306"

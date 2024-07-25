@@ -25,11 +25,15 @@ import java.util.stream.Stream;
 public class UserDetail implements UserDetails {
 
     private User user;
-    private String permits;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Stream.of(permits.split(",")).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+        return Stream
+                .of(user
+                        .getRole()
+                        .split(","))
+                .map(SimpleGrantedAuthority::new)
+                .collect(Collectors.toList());
     }
 
     @Override

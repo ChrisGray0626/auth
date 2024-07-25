@@ -1,14 +1,15 @@
 package pers.ruizhi.auth.service;
 
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
+import pers.ruizhi.auth.dao.UserRepo;
+import pers.ruizhi.auth.domain.User;
 import pers.ruizhi.auth.domain.UserDetail;
 import pers.ruizhi.auth.exception.UserNotFoundException;
 
-import static pers.ruizhi.auth.Constant.USER;
-import static pers.ruizhi.auth.Constant.USERNAME;
+import javax.annotation.Resource;
 
 /**
  * @Description
@@ -17,15 +18,16 @@ import static pers.ruizhi.auth.Constant.USERNAME;
  */
 @Component
 public class UserDetailServiceImpl implements UserDetailsService {
-    // TODO UserDetailServiceImpl
+
+    @Resource
+    private UserRepo userRepo;
+
     @Override
     public UserDetail loadUserByUsername(String username) throws UsernameNotFoundException {
-
-//         TODO Get user details
-        if (StringUtils.equals(username, USERNAME)) {
-            return new UserDetail(USER, "admin");
-        } else {
+        User user = userRepo.findByUsername(username);
+        if (ObjectUtils.isEmpty(user)) {
             throw new UserNotFoundException();
         }
+        return new UserDetail(user);
     }
 }

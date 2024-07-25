@@ -62,8 +62,8 @@ public class AuthConfig extends AuthorizationServerConfigurerAdapter {
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients
                 .inMemory()
-                .withClient(AUTH_CLIENT)
-                .secret(passwordEncoder.encode(AUTH_SECRET))
+                .withClient(AUTH_CLIENT_NAME)
+                .secret(passwordEncoder.encode(AUTH_SECRET_SECRET))
                 .resourceIds(AUTH_RESOURCE_ID)
                 .scopes(AUTH_SCOPE)
                 .authorizedGrantTypes(AUTH_GRANT_PASSWORD, AUTH_GRANT_REFRESH_TOKEN)
