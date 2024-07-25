@@ -14,7 +14,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>micro-auth</module>
-        <module>micro-server</module>
+        <module>micro-course</module>
         <module>micro-registry</module>
         <module>micro-gateway</module>
         <module>micro-common</module>
@@ -50,6 +50,11 @@
                 <artifactId>jjwt</artifactId>
                 <version>${jjwt.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.mysql</groupId>
+                <artifactId>mysql-connector-j</artifactId>
+                <version>${mysql-connector-j.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>
@@ -62,11 +67,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-            <version>${mysql-connector-j.version}</version>
         </dependency>
     </dependencies>
     <build>

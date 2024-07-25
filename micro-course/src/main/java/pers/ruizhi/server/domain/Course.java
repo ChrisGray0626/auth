@@ -1,4 +1,4 @@
-package pers.ruizhi.auth.domain;
+package pers.ruizhi.server.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,18 +10,15 @@ import javax.persistence.Entity;
 
 /**
  * @Description
- * @Author RuiZhi Li
- * @Date 2024/7/3
+ * @Author Chris
+ * @Date 2024/7/25
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class User extends BaseEntity {
+public class Course extends BaseEntity {
 
-    private String username;
-    private String password;
-    private String role;
-
+    private String name;
 }
