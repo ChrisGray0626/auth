@@ -11,9 +11,9 @@ spring:
           lower-case-service-id: true
       routes:
         - id: server
-          uri: lb://micro-server
+          uri: lb://micro-course
           predicates:
-            - Path=/server/**
+            - Path=/course/**
         - id: auth
           uri: lb://micro-auth
           predicates:

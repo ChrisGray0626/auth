@@ -5,6 +5,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.core.io.buffer.DataBufferFactory;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AccountExpiredException;
+import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.oauth2.server.resource.InvalidBearerTokenException;
 import org.springframework.security.web.server.ServerAuthenticationEntryPoint;
@@ -38,6 +39,8 @@ public class AuthenticationEntryPoint implements ServerAuthenticationEntryPoint 
                         res = new Response(ResponseEnum.INVALID_TOKEN_ERROR);
                     } else if (e instanceof AccountExpiredException) {
                         res = new Response(ResponseEnum.EXPIRED_TOKEN_ERROR);
+                    } else if (e instanceof AuthenticationCredentialsNotFoundException) {
+                        res = new Response(ResponseEnum.AUTHENTICATION_NOT_FOUND_ERROR);
                     } else {
                         log.error(e.getMessage());
                         res = new Response(ResponseEnum.ERROR);

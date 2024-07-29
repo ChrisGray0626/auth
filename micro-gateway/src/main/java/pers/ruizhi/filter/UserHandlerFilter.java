@@ -1,5 +1,7 @@
 package pers.ruizhi.filter;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
@@ -26,6 +28,8 @@ public class UserHandlerFilter implements GlobalFilter {
 
     @Resource
     private TokenStore tokenStore;
+    @Resource
+    private ObjectMapper objectMapper;
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
@@ -48,6 +52,18 @@ public class UserHandlerFilter implements GlobalFilter {
                                         .getAttributes()
                                         .put(k, v)
                 );
+        // Save user information to header
+        Object user = oAuth2AccessToken
+                .getAdditionalInformation()
+                .get(Constant.ADDITIONAL_INFO_KEY_USER);
+        try {
+            exchange
+                    .getRequest()
+                    .mutate()
+                    .header(Constant.HEADER_KEY_USER, objectMapper.writeValueAsString(user));
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
         return chain.filter(exchange);
     }
 
@@ -55,10 +71,12 @@ public class UserHandlerFilter implements GlobalFilter {
         String token = exchange
                 .getRequest()
                 .getHeaders()
-                .getFirst(Constant.HEADER_AUTHORIZATION);
+                .getFirst(Constant.HEADER_KEY_AUTHORIZATION);
         if (StringUtils.isEmpty(token)) {
             return null;
         }
-        return token.replace(Constant.PREFIX_BEARER, "");
+        // Remove prefix
+        token = token.replace(Constant.PREFIX_BEARER, "");
+        return token;
     }
 }

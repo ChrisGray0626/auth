@@ -1,8 +1,10 @@
 server:
   port: 4001
+  servlet:
+    context-path: /course
 spring:
   application:
-    name: micro-server
+    name: micro-course
   jpa:
     hibernate:
       ddl-auto: update

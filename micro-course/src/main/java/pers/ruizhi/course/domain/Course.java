@@ -1,4 +1,4 @@
-package pers.ruizhi.server.domain;
+package pers.ruizhi.course.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -17,6 +17,8 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
     @Override
     public Mono<AuthorizationDecision> check(Mono<Authentication> authentication, AuthorizationContext object) {
         // TODO Config authorization
-        return Mono.just(new AuthorizationDecision(true));
+        return authentication
+                .map(auth -> new AuthorizationDecision(true))
+                .defaultIfEmpty(new AuthorizationDecision(false));
     }
 }

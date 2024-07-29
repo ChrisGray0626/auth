@@ -1,6 +1,7 @@
-package pers.ruizhi.server.controller;
+package pers.ruizhi.course.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pers.ruizhi.common.domain.Response;
 
@@ -11,9 +12,10 @@ import pers.ruizhi.common.domain.Response;
  */
 
 @RestController
+@RequestMapping("/api")
 public class HelloController {
 
-    @GetMapping("/server/hello")
+    @GetMapping("/hello")
     public Response hello() {
         return Response.success("hello");
     }

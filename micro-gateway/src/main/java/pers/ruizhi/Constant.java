@@ -7,9 +7,9 @@ package pers.ruizhi;
  */
 public class Constant {
 
-    public static final String HEADER_AUTHORIZATION = "Authorization";
-    public static final String PREFIX_BEARER = "bearer ";
+    public static final String HEADER_KEY_AUTHORIZATION = "Authorization";
+    public static final String PREFIX_BEARER = "Bearer ";
     public static final String ADDITIONAL_INFO_KEY_USER = "user";
-
+    public static final String HEADER_KEY_USER = "user";
 
 }
