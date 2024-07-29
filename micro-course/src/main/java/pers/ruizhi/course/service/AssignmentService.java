@@ -4,15 +4,15 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import pers.ruizhi.course.Constant;
 import pers.ruizhi.course.dao.AssignmentRepo;
+import pers.ruizhi.course.dao.CourseRepo;
 import pers.ruizhi.course.dao.StudentRepo;
 import pers.ruizhi.course.dao.SubmissionRepo;
-import pers.ruizhi.course.domain.Student;
-import pers.ruizhi.course.domain.Submission;
-import pers.ruizhi.course.domain.SubmissionDto;
+import pers.ruizhi.course.domain.*;
 import pers.ruizhi.course.exception.EntityNotFoundException;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static pers.ruizhi.course.util.Util.generateRandom10;
 
@@ -26,6 +26,8 @@ public class AssignmentService {
 
     @Resource
     private AssignmentRepo assignmentRepo;
+    @Resource
+    private CourseRepo courseRepo;
     @Resource
     private StudentRepo studentRepo;
     @Resource
@@ -52,6 +54,20 @@ public class AssignmentService {
         submission = submissionRepo.save(submission);
 
         return submission;
+    }
+
+    public List<AssignmentFindAllVo> findAll(Integer courseId, Student student) {
+        // Check if the course exists
+        if (!courseRepo.existsById(courseId)) {
+            throw new EntityNotFoundException(Constant.ENTITY_COURSE, courseId);
+        }
+        // TODO findAllAssignmentByStudent
+        return assignmentRepo.findAllByCourseId(courseId);
+    }
+
+    public Assignment findOne(Integer assignmentId, Student student) {
+        // TODO Check if the student enrolled in the course of the assignment
+        return null;
     }
 
     private double mark(String content) {
