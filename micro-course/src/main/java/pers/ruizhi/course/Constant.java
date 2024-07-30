@@ -2,7 +2,7 @@ package pers.ruizhi.course;
 
 /**
  * @Description
- * @Author Chris
+ * @Author RuiZhi Li
  * @Date 2024/7/26
  */
 public class Constant {

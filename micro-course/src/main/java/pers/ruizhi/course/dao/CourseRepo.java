@@ -6,7 +6,7 @@ import pers.ruizhi.course.domain.Course;
 
 /**
  * @Description
- * @Author Chris
+ * @Author RuiZhi Li
  * @Date 2024/7/29
  */
 @Repository

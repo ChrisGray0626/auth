@@ -9,6 +9,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import pers.ruizhi.course.dao.StudentRepo;
 import pers.ruizhi.course.domain.Student;
 import pers.ruizhi.course.exception.EntityNotFoundException;
+import pers.ruizhi.course.util.RequestUtil;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +20,7 @@ import static pers.ruizhi.course.Constant.*;
 
 /**
  * @Description
- * @Author Chris
+ * @Author RuiZhi Li
  * @Date 2024/7/26
  */
 @Component
@@ -45,7 +46,7 @@ public class UserHandlerInterceptor implements HandlerInterceptor {
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
-        // Check if user exists
+        // Check if user is valid
         if (!user.containsKey(USER_KEY_ROLE)) {
             return false;
         }
@@ -61,7 +62,7 @@ public class UserHandlerInterceptor implements HandlerInterceptor {
                     throw new EntityNotFoundException(ENTITY_STUDENT, userId);
                 }
                 // Save to attribute
-                request.setAttribute(ATTRIBUTE_KEY_STUDENT, student);
+                RequestUtil.setAttribute(ATTRIBUTE_KEY_STUDENT, student);
             default:
         }
         return true;

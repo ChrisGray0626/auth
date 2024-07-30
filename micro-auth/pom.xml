@@ -44,10 +44,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-        </dependency>
-        <dependency>
             <groupId>pers.pers.ruizhi</groupId>
             <artifactId>micro-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>

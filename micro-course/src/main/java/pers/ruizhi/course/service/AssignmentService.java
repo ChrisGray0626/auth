@@ -9,6 +9,7 @@ import pers.ruizhi.course.dao.StudentRepo;
 import pers.ruizhi.course.dao.SubmissionRepo;
 import pers.ruizhi.course.domain.*;
 import pers.ruizhi.course.exception.EntityNotFoundException;
+import pers.ruizhi.course.util.RequestUtil;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
@@ -18,7 +19,7 @@ import static pers.ruizhi.course.util.Util.generateRandom10;
 
 /**
  * @Description
- * @Author Chris
+ * @Author RuiZhi Li
  * @Date 2024/7/29
  */
 @Service
@@ -34,7 +35,7 @@ public class AssignmentService {
     private SubmissionRepo submissionRepo;
 
 
-    public Submission submit(SubmissionDto submissionDto, Student student) {
+    public Submission submit(SubmissionDto submissionDto) {
         // Check if the assignment exists
         Integer assignmentId = submissionDto.getAssignmentId();
         if (!assignmentRepo.existsById(assignmentId)) {
@@ -42,6 +43,9 @@ public class AssignmentService {
         }
         Submission submission = new Submission();
         BeanUtils.copyProperties(submissionDto, submission);
+        // Get student
+        Student student = (Student) RequestUtil.getAttribute(Constant.ATTRIBUTE_KEY_STUDENT);
+        assert student != null;
         Integer studentId = student.getId();
         submission.setStudentId(studentId);
         // Mark the assignment
@@ -56,11 +60,14 @@ public class AssignmentService {
         return submission;
     }
 
-    public List<AssignmentFindAllVo> findAll(Integer courseId, Student student) {
+    public List<AssignmentFindAllVo> findAll(Integer courseId) {
         // Check if the course exists
         if (!courseRepo.existsById(courseId)) {
             throw new EntityNotFoundException(Constant.ENTITY_COURSE, courseId);
         }
+        // Get student
+        Student student = (Student) RequestUtil.getAttribute(Constant.ATTRIBUTE_KEY_STUDENT);
+        assert student != null;
         // TODO findAllAssignmentByStudent
         return assignmentRepo.findAllByCourseId(courseId);
     }

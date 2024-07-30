@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 
 /**
  * @Description
- * @Author Chris
+ * @Author RuiZhi Li
  * @Date 2024/7/29
  */
 @RestControllerAdvice(basePackages = "pers.ruizhi.course")
