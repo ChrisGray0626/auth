@@ -11,8 +11,8 @@ import org.springframework.security.oauth2.server.resource.InvalidBearerTokenExc
 import org.springframework.security.web.server.ServerAuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
-import pers.ruizhi.gateway.common.domain.Response;
-import pers.ruizhi.gateway.common.domain.ResponseEnum;
+import pers.ruizhi.common.Response;
+import pers.ruizhi.common.ResponseEnum;
 import reactor.core.publisher.Mono;
 
 import java.io.IOException;

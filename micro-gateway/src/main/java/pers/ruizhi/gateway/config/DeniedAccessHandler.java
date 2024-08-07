@@ -8,8 +8,8 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.server.authorization.ServerAccessDeniedHandler;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
-import pers.ruizhi.gateway.common.domain.Response;
-import pers.ruizhi.gateway.common.domain.ResponseEnum;
+import pers.ruizhi.common.Response;
+import pers.ruizhi.common.ResponseEnum;
 import reactor.core.publisher.Mono;
 
 import java.io.IOException;

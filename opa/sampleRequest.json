@@ -1,0 +1,18 @@
+{
+  "submissions": [
+    {
+      "id": 0,
+      "assignmentId": 0
+    }
+  ],
+  "assignments": [
+    {
+      "id": 0,
+      "order": 1
+    },
+    {
+      "id": 1,
+      "order": 2
+    }
+  ]
+}
