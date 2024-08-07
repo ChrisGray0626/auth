@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * @Description
+ * @Description Assignment Service
  * @Author RuiZhi Li
  * @Date 2024/7/29
  */
@@ -77,9 +77,9 @@ public class AssignmentService {
         // Get student
         Student student = (Student) RequestUtil.getAttribute(Constant.ATTRIBUTE_KEY_STUDENT);
         Integer studentId = student.getId();
-        // Filter the assignments that the student has submitted
         List<Submission> submissions = submissionRepo.findAllByCourseIdAndStudentId(courseId, studentId);
         List<Assignment> assignments = assignmentRepo.findAllByCourseId(courseId);
+        // Filter the assignments that the student has submitted
         List<Integer> accessAssignments = client
                 .accessAssignment(new AssignmentAccessDto(submissions, assignments))
                 .getResult()
@@ -98,13 +98,13 @@ public class AssignmentService {
         // Get student
         Student student = (Student) RequestUtil.getAttribute(Constant.ATTRIBUTE_KEY_STUDENT);
         Integer studentId = student.getId();
-        // Filter the assignments that the student has submitted
         List<Submission> submissions = submissionRepo.findAllByCourseIdAndStudentId(courseId, studentId);
         List<Assignment> assignments = assignmentRepo.findAllByCourseId(courseId);
         List<Integer> accessAssignments = client
                 .accessAssignment(new AssignmentAccessDto(submissions, assignments))
                 .getResult()
                 .getAccessAssignments();
+        // Filter the assignments that the student has submitted
         if (accessAssignments.contains(assignmentId)) {
             return Response.success(assignment);
         } else {

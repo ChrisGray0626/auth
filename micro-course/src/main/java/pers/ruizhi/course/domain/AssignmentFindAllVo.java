@@ -14,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 public class AssignmentFindAllVo {
 
-    List<Integer> accessAssignments;
     private List<Assignment> assignments;
+    private List<Integer> accessAssignments;
+
 }
