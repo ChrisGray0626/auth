@@ -3,6 +3,8 @@ package pers.ruizhi.course.util;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
+import pers.ruizhi.course.Constant;
+import pers.ruizhi.course.domain.Student;
 import pers.ruizhi.course.exception.RequestAttributeNotFoundException;
 
 /**
@@ -26,5 +28,9 @@ public class RequestUtil {
             throw new RequestAttributeNotFoundException(key);
         }
         return value;
+    }
+
+    public static Student getStudent() {
+        return (Student) getAttribute(Constant.ATTRIBUTE_KEY_STUDENT);
     }
 }

@@ -16,7 +16,7 @@ public class AssignmentAccessDto {
 
     private Input input;
 
-    public AssignmentAccessDto(List<Submission> submissions, List<Assignment> assignments) {
+    public AssignmentAccessDto(List<Submission> submissions, List<AssignmentSimpleVo> assignments) {
         input = new Input(submissions, assignments);
     }
 
@@ -24,6 +24,6 @@ public class AssignmentAccessDto {
     @AllArgsConstructor
     public static class Input {
         private List<Submission> submissions;
-        private List<Assignment> assignments;
+        private List<AssignmentSimpleVo> assignments;
     }
 }

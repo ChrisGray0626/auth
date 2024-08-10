@@ -1,7 +1,7 @@
 package pers.ruizhi.course.controller;
 
 import org.springframework.web.bind.annotation.*;
-import pers.ruizhi.common.Response;
+import pers.ruizhi.course.domain.Assignment;
 import pers.ruizhi.course.domain.AssignmentFindAllVo;
 import pers.ruizhi.course.domain.Submission;
 import pers.ruizhi.course.domain.SubmissionDto;
@@ -33,7 +33,7 @@ public class AssignmentController {
     }
 
     @GetMapping("/assignment")
-    public Response findItem(@RequestParam Integer assignmentId) {
+    public Assignment findItem(@RequestParam Integer assignmentId) {
 
         return assignmentService.findItem(assignmentId);
     }

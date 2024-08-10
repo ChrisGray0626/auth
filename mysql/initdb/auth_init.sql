@@ -13,5 +13,5 @@ CREATE TABLE IF NOT EXISTS `user`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
 
-INSERT INTO `user` (`username`, `password`, `role`)
-VALUES ('Chris', '$2a$10$2vgi2N3T5yHqdEHUH101lug07Yd3xJ8YzWgTLJ41H1Z9r8cLfvWw6', 'student');
+INSERT INTO `user` (`id`, `username`, `password`, `role`)
+VALUES (1, 'Chris', '$2a$10$2vgi2N3T5yHqdEHUH101lug07Yd3xJ8YzWgTLJ41H1Z9r8cLfvWw6', 'student');

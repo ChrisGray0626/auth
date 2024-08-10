@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import pers.ruizhi.common.Response;
 import pers.ruizhi.common.ResponseEnum;
+import pers.ruizhi.course.exception.AccessDeniedException;
 import pers.ruizhi.course.exception.EntityNotFoundException;
 import pers.ruizhi.course.exception.RequestAttributeNotFoundException;
 
@@ -33,6 +34,11 @@ public class GlobalExceptionAdvice {
         Map<String, Object> data = new HashMap<>();
         data.put("key", e.getKey());
         return new Response(ResponseEnum.REQUEST_ATTRIBUTE_NOT_FOUND_ERROR, data);
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    public Response handle(AccessDeniedException e) {
+        return new Response(ResponseEnum.DENIED_ACCESS_ERROR);
     }
 
 //    @ExceptionHandler(RuntimeException.class)

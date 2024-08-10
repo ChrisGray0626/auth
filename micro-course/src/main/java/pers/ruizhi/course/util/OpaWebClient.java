@@ -28,7 +28,6 @@ public class OpaWebClient {
     private ObjectMapper objectMapper;
 
     public OpaWebClient() {
-        this.objectMapper = new ObjectMapper();
         this.client = WebClient
                 .builder()
                 .baseUrl(OPA_URL)
@@ -51,5 +50,9 @@ public class OpaWebClient {
                 .block();
         log.info("assignmentAccessVo {}", response);
         return response;
+    }
+
+    public void setObjectMapper(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
     }
 }
