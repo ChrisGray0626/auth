@@ -1,6 +1,7 @@
 services:
   opa:
     image: openpolicyagent/opa:0.67.0-istio-4-static
+    container_name: opa
     ports:
       - "8181:8181"
     volumes:
