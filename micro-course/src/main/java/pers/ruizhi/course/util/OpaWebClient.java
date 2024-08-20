@@ -2,17 +2,16 @@ package pers.ruizhi.course.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
-import org.springframework.web.reactive.function.client.WebClient;
-import pers.ruizhi.course.domain.AssignmentAccessDto;
-import pers.ruizhi.course.domain.AssignmentAccessResponse;
-
-import javax.annotation.Resource;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
-
-import static pers.ruizhi.course.Constant.OPA_URL;
+import javax.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import org.springframework.web.reactive.function.client.WebClient;
+import static pers.ruizhi.course.Constant.OPA_URL_PREFIX;
+import pers.ruizhi.course.domain.AssignmentAccessDto;
+import pers.ruizhi.course.domain.AssignmentAccessResponse;
 
 /**
  * @Description
@@ -26,11 +25,13 @@ public class OpaWebClient {
     private final WebClient client;
     @Resource
     private ObjectMapper objectMapper;
+    @Value("${opa.policy}")
+    private String policy;
 
     public OpaWebClient() {
         this.client = WebClient
                 .builder()
-                .baseUrl(OPA_URL)
+                .baseUrl(OPA_URL_PREFIX + policy)
                 .build();
     }
 
