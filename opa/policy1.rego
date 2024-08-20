@@ -33,6 +33,7 @@ accessAssignments contains id if {
         preAssignment.order == preOrder
         preAssignmentId := preAssignment.id
         submission := input.submissions[_]
+        submission.assignmentId == preAssignmentId
         # Check the submission grade
         submission.grade >= 0.5
     }

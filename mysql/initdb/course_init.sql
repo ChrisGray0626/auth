@@ -25,6 +25,19 @@ VALUES (2, 1, '2024-07-31 17:13:28.000000', 'Assignment 2: Learn Web', 'Please e
 INSERT INTO `assignment` (`id`, `course_id`, `due_time`, `name`, `question`, `order`)
 VALUES (3, 1, '2024-08-07 20:18:22.000000', 'Assignment 3: Learn Topic Modeling', 'Please explain what is the topic.',
         3);
+INSERT INTO `assignment` (`id`, `course_id`, `due_time`, `name`, `question`, `order`)
+VALUES (4, 1, '2024-08-20 11:14:42.000000', 'Assignment 4: Learn sentiment analysis',
+        'Please explain what is the sentiment.', 4);
+INSERT INTO `assignment` (`id`, `course_id`, `due_time`, `name`, `question`, `order`)
+VALUES (5, 1, '2024-08-21 11:16:15.000000', 'Assignment 5: Learn emotion analysis',
+        'Please explain what is the Please explain what is the emotion.', 5);
+INSERT INTO `assignment` (`id`, `course_id`, `due_time`, `name`, `question`, `order`)
+VALUES (6, 1, '2024-08-24 11:18:43.000000', 'Assignment 6: Learn user modeling',
+        'Please explain what is the Please explain what is the user modeling.', 6);
+INSERT INTO `assignment` (`id`, `course_id`, `due_time`, `name`, `question`, `order`)
+VALUES (7, 1, '2024-08-24 13:43:14.000000', 'Assignment 7: Learn hate detection',
+        'Please explain what is the Please explain what is the hate.', 7);
+
 
 CREATE TABLE IF NOT EXISTS `course`
 (

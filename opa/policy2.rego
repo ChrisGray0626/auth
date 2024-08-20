@@ -1,4 +1,4 @@
-package pers.ruizhi.auth.policy1
+package pers.ruizhi.auth
 
 import rego.v1
 
