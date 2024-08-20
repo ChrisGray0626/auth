@@ -7,6 +7,7 @@ import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.stereotype.Component;
 import pers.ruizhi.auth.Constant;
+import pers.ruizhi.auth.domain.User;
 import pers.ruizhi.auth.domain.UserDetail;
 
 import java.util.HashMap;
@@ -27,9 +28,15 @@ public class JwtTokenEnhancer implements TokenEnhancer {
                 .getUserAuthentication()
                 .getPrincipal();
         Map<String, Object> info = new HashMap<>();
-        info.put(Constant.ADDITIONAL_INFO_KEY_USER, userDetail.getUser());
+        User user = userDetail.getUser();
+        this.maskUser(user);
+        info.put(Constant.ADDITIONAL_INFO_KEY_USER, user);
         ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(info);
 
         return accessToken;
+    }
+
+    private void maskUser(User user) {
+        user.setPassword(null);
     }
 }

@@ -5,8 +5,8 @@ services:
     ports:
       - "8181:8181"
     volumes:
-      - ./policy.rego:/policy.rego
+      - ./policy1.rego:/policy1.rego
     command:
       - "run"
       - "--server"
-      - "/policy.rego"
+      - "/policy1.rego"
