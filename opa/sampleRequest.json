@@ -1,18 +1,52 @@
 {
-  "submissions": [
-    {
-      "id": 0,
-      "assignmentId": 0
-    }
-  ],
-  "assignments": [
-    {
-      "id": 0,
-      "order": 1
-    },
-    {
-      "id": 1,
-      "order": 2
-    }
-  ]
+  "input": {
+    "submissions": [
+      {
+        "id": 0,
+        "assignmentId": 0
+      }
+    ],
+    "assignments": [
+      {
+        "id": 0,
+        "order": 1
+      },
+      {
+        "id": 1,
+        "order": 2
+      },
+      {
+        "id": 2,
+        "order": 3
+      },
+      {
+        "id": 3,
+        "order": 4
+      },
+      {
+        "id": 4,
+        "order": 5
+      },
+      {
+        "id": 5,
+        "order": 6
+      },
+      {
+        "id": 6,
+        "order": 7
+      },
+      {
+        "id": 7,
+        "order": 8
+      },
+      {
+        "id": 8,
+        "order": 9
+      },
+      {
+        "id": 9,
+        "order": 10
+      }
+    ]
+  }
 }
